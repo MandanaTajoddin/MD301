@@ -28,7 +28,8 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
 
-  // Solution code here...
+  arr.sort();
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,7 +39,8 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  // Solution code here...
+  arr.sort((a,b) => a.length > b.length)
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -50,7 +52,8 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  // Solution code here...
+  arr.sort((a,b) => a.toUpperCase() > b.toUpperCase())
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +70,8 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
-  // Solution code here...
+  arr.sort((a,b) => a.price > b.price)
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -79,7 +83,8 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) => {
-  // Solution code here...
+ arr.sort((a,b) => a.toString().length - b.toString().length)
+ return arr;
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -101,7 +106,8 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  arr.sort((a,b) => a.lastName > b.lastName)
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,7 +121,15 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  arr.sort((a,b) => 
+   {if(a.lastName !== b.lastName)
+    { return a.lastName > b.lastName}
+  else if (a.firstName !== b.firstName){
+     return a.firstName > b.firstName}
+     else  
+       return a.age > b.age
+});
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -141,9 +155,13 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+    arr.sort((a,b) => {
+    const week = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+    return week.indexOf(a.dayOfWeek) > week.indexOf(b.dayOfWeek); 
+});
+return arr;
 };
-
+    
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
 
@@ -155,7 +173,20 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
+  const week = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+  Meeting.prototype.result = function(){
+    return  this.end - this.start;
+
+    };
+    arr.sort((a,b) => 
+    {if (week.indexOf(a.dayOfWeek) === week.indexOf(b.dayOfWeek)){
+      return a.result < b.result;
+    } else 
+         return week.indexOf(a.dayOfWeek) > week.indexOf(b.dayOfWeek) ;
+  });
+    return arr;
+     
+     
 };
 
 /* ------------------------------------------------------------------------------------------------
